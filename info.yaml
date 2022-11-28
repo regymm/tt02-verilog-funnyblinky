@@ -3,8 +3,8 @@
 project:
   wokwi_id:    0        # If using wokwi, set this to your project's ID
   source_files:        # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. Source files must be in ./src
-    - mcpi.v
-  top_module:  "regymm_mcpi"      # put the name of your top module here, make it unique by prepending your github username
+    - funnyblinky.v
+  top_module:  "regymm_funnyblinky"      # put the name of your top module here, make it unique by prepending your github username
 
 # As everyone will have access to all designs, try to make it easy for someone new to your design to know what
 # it does and how to operate it.
@@ -15,11 +15,11 @@ project:
 documentation: 
   author:       "regymm"      # Your name
   discord:      "regymm#4892"      # Your discord handle
-  title:        "Monte Carlo Pi Integrator"      # Project title
-  description:  "Calculate the value of Pi using the Monte Carlo method"      # Short description of what your project does
-  how_it_works: "Having random x and y between 0 to 1 and compare the added squares with 1. Using 8-bit fixed-point number."      # Longer description of how the project works
-  how_to_test:  "SW 00: counter shows total sample points. SW 01: counter shows sample points inside 1 radius. SW 10: counter 0 and 1 will toggle, 0 for every sample point and 1 for inside point, for use with external counter. "      # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
-  external_hw:  "External edge counter recommended(funnyblinky is a possible choice)"      # Describe any external hardware needed
+  title:        "Funny Blinky"      # Project title
+  description:  "Blink the 8 output LEDs in a funny way."      # Short description of what your project does
+  how_it_works: "."      # Longer description of how the project works
+  how_to_test:  "When function switch is turned off, all LEDs will be blinky. When switch is on, it works as a double 14-bit counter, to be used together with the mcpi module -- in this case we have pause switch and two output control switches to show all bits of the counters. "      # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  external_hw:  ""      # Describe any external hardware needed
   language:     "verilog" # other examples include Verilog, Amaranth, VHDL, etc
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
   clock_hz:     1000       # Clock frequency in Hz (if required)
@@ -27,19 +27,19 @@ documentation:
   inputs:               # a description of what the inputs do
     - clock
     - reset
-    - sw control 0
-    - sw control 1
     - none
     - none
-    - none
-    - none
+    - switch out ctrl 0
+    - switch out ctrl 1
+    - switch pause
+    - switch function
   outputs:
-    - counter 0         # a description of what the outputs do
-    - counter 1
-    - counter 2
-    - counter 3
-    - counter 4
-    - counter 5
-    - counter 6
-    - counter 7
+    - led 0         # a description of what the outputs do
+    - led 1
+    - led 2
+    - led 3
+    - led 4
+    - led 5
+    - led 6
+    - led 7
 
